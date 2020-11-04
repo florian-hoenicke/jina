@@ -476,8 +476,7 @@ class Flow(ExitStack):
                                                 args=(self.args.logserver_config,
                                                       self.yaml_spec))
             self._sse_logger.start()
-            time.sleep(1)
-            response = urllib.request.urlopen(JINA_GLOBAL.logserver.ready, timeout=5)
+            response = urllib.request.urlopen(JINA_GLOBAL.logserver.ready, timeout=6)
             if response.status == 200:
                 self.logger.success(f'logserver is started and available at {JINA_GLOBAL.logserver.address}')
         except ModuleNotFoundError:
